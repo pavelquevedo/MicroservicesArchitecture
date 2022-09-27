@@ -28,7 +28,7 @@ namespace Ordering.Application.Features.Commands.UpdateOrder
         public async Task<Unit> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
         {
             var orderToUpdate = await _orderRepository.GetByIdAsync(request.Id);
-            if (orderToUpdate != null)
+            if (orderToUpdate == null)
             {
                 _logger.LogError("Order doesn't exist on the database.");
                 throw new NotFoundException(nameof(Order), request.Id);

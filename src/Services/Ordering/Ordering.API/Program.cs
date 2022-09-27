@@ -19,7 +19,8 @@ var app = builder.Build();
 app.MigrateDatabase<OrderContext>((context, services) =>
 {
     var logger = services.GetService<ILogger<OrderContextSeed>>();
-    OrderContextSeed.SeedAsync(context, logger).Wait();
+    //Commenting data seed since it doesn't meet table structure
+    //OrderContextSeed.SeedAsync(context, logger).Wait();
 });
 
 // Configure the HTTP request pipeline.
